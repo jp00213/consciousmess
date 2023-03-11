@@ -13,11 +13,10 @@
   <tbody>
     <% @ripples.reverse_each do |ripple| %>
       <tr>
-        <td><a href=<%= ripple.url %>><%= ripple.​​name %></a></td>
-        <td><%= ripple.message %></td>
-        <td><%= ripple.created_at %></td>
+        <td class="columnName"><a href=<%= ripple.url %>><%= ripple.​​name %></a></td>
+        <td class="columnMessage"><%= ripple.message %></td>
+        <td class="columnCreated"><%= ripple.created_at %></td>
         <td><%= link_to 'Show', ripple %></td>
-        <td><%= link_to 'Edit', edit_ripple_path(ripple) %></td>
         <td><%= link_to 'Destroy', ripple, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

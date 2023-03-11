@@ -4,7 +4,7 @@
 
 table {
   padding: 5px;
-  width: 70%;
+  width: 80%;
 }
 
 tbody tr:nth-child(odd) {
@@ -16,7 +16,31 @@ form {
 }
 
 .fancymessage {
-  padding-left: 50px;
   font-family: "Times New Roman", Times, serif;
   font-size: 2em;
+  width: 70%;
+  margin: auto;
+  border: 1px solid grey;
+  border-radius: 5px;
+  box-shadow: 10px 10px 8px #6699CC;
+  padding: 20px;
+  line-height: 100%;
 }
+
+.columnName{
+  width: 25%;
+}
+
+.columnMessage {
+  width: 50%;
+  max-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.columnCreated {
+  width: 25%;
+}
+
+
