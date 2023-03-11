@@ -20,7 +20,8 @@ class RipplesControllerTest < ActionDispatch::IntegrationTest
       post ripples_url, params: { ripple: { message: @ripple.message, url: @ripple.url, ​​name: @ripple.​​name } }
     end
 
-    assert_redirected_to ripple_url(Ripple.last)
+    assert_redirected_to action: "index"
+#    assert_redirected_to ripple_url(Ripple.last)
   end
 
   test "should show ripple" do

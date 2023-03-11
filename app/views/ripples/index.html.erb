@@ -13,7 +13,13 @@
   <tbody>
     <% @ripples.reverse_each do |ripple| %>
       <tr>
-        <td class="columnName"><a href=<%= ripple.url %>><%= ripple.​​name %></a></td>
+        <td class="columnName">
+          <% if ripple.url == "" %>
+            <%= ripple.​​name %>
+          <% else %>
+            <a href=<%= ripple.url %>><%= ripple.​​name %></a>
+          <% end %>
+        </td>
         <td class="columnMessage"><%= ripple.message %></td>
         <td class="columnCreated"><%= ripple.created_at %></td>
         <td><%= link_to 'Show', ripple %></td>
