@@ -3,7 +3,7 @@ class RipplesController < ApplicationController
 
   # GET /ripples or /ripples.json
   def index
-    @ripples = Ripple.all
+    @ripples = Ripple.all.order('created_at DESC')
   end
 
   # GET /ripples/1 or /ripples/1.json
@@ -55,6 +55,21 @@ class RipplesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def setPosition(value = Integer(params[:value]))
+    session[:position] = value
+    respond_to do |format|
+      format.html { redirect_to action: "index" }
+    end
+  end
+  
+  def changePosition(value = Integer(params[:value]))
+    session[:position] = Integer(session[:position]) + value
+    respond_to do |format|
+      format.html { redirect_to action: "index" }
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

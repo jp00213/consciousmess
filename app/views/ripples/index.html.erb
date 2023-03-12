@@ -6,12 +6,12 @@
       <th>​​Name</th>
       <th>Message</th>
       <th>Posted</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @ripples.reverse_each do |ripple| %>
+    <% @ripples.limit(10).offset(getPosition).each do |ripple| %>
       <tr>
         <td class="columnName">
           <% if ripple.url == "" %>
@@ -30,5 +30,11 @@
 </table>
 
 <br>
+<% last = (@ripples.length / 10) * 10 %>
 
-Newest | Previous 10 Ripples | Next 10 Ripples | Oldest | <%= link_to 'New Ripple', new_ripple_path %>
+<%= link_to 'Newest', setPosition_path(:value => 0), method: :post %> | 
+<%= link_to 'Previous 10 Ripples', changePosition_path(:value => -10), method: :post %> | 
+<%= link_to 'Next 10 Ripples', changePosition_path(:value => 10), method: :post %> | 
+<%= link_to 'Oldest', setPosition_path(:value => last), method: :post %> | 
+<%= link_to 'New Ripple', new_ripple_path %>
+
