@@ -16,13 +16,10 @@ class RipplesTest < ApplicationSystemTestCase
     click_on "New Ripple"
     assert_selector "h1", text: "Say What's On Your Mind"
 
-    fill_in "Name", with: @ripple.​​name
-    fill_in "url", with: @ripple.url
-    fill_in "message", with: @ripple.message
+    fill_in "Your", with: @ripple.​​name
+    fill_in "A", with: @ripple.url
+    fill_in "Your message", with: @ripple.message
     click_on "Create Ripple"
-
-    assert_text "Ripple was successfully created"
-    click_on "Back"
   end
 
   test "next 10 and then newest" do

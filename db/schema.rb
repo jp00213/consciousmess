@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2023_03_08_003329) do
 
   create_table "ripples", force: :cascade do |t|
-    t.string "​​name"
+    t.string "name"
     t.string "url"
     t.text "message"
     t.datetime "created_at", precision: 6, null: false

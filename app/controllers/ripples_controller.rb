@@ -86,6 +86,6 @@ class RipplesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ripple_params
-      params.require(:ripple).permit(:​​name, :url, :message)
+      params.require(:ripple).permit(:name, :url, :message)
     end
 end
