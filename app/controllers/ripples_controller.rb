@@ -64,10 +64,17 @@ class RipplesController < ApplicationController
   end
   
   def changePosition(value = Integer(params[:value]))
+    if session[:position] == nil
+      session[:position] = 0
+    end
     session[:position] = Integer(session[:position]) + value
     respond_to do |format|
       format.html { redirect_to action: "index" }
     end
+  end
+
+  def getPosition
+    session[:position]
   end
 
 

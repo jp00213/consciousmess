@@ -1,11 +1,58 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  ​​name: MyString
-  url: MyString
-  message: MyText
+  ​​name: MyString1
+  url: MyString1
+  message: MyText1
 
 two:
   ​​name: MyString
   url: MyString
   message: MyText
+  
+three:
+  ​​name: MyString
+  url: MyString
+  message: MyText
+
+four:
+  ​​name: MyString
+  url: MyString
+  message: MyText
+
+five:
+  ​​name: MyString
+  url: MyString
+  message: MyText
+
+six:
+  ​​name: MyString
+  url: MyString
+  message: MyText
+
+seven:
+  ​​name: MyString
+  url: MyString
+  message: MyText
+
+eight:
+  ​​name: MyString
+  url: MyString
+  message: MyText
+
+nine:
+  ​​name: MyString
+  url: MyString
+  message: MyText
+
+ten:
+  ​​name: MyString
+  url: MyString
+  message: MyText
+
+eleven:
+  ​​name: MyString11
+  url: MyString11
+  message: MyText11
+
+
