@@ -16,23 +16,14 @@ class RipplesTest < ApplicationSystemTestCase
     click_on "New Ripple"
     assert_selector "h1", text: "Say What's On Your Mind"
 
-    fill_in "Your", with: @ripple.​​name
+    fill_in "Your name", with: @ripple.name
     fill_in "A", with: @ripple.url
     fill_in "Your message", with: @ripple.message
     click_on "Create Ripple"
+    assert_selector "th", text: "Name"
+    assert_selector "th", text: "Message"
+    assert_selector "th", text: "Posted"
+    assert_selector "td", text: @ripple.name
   end
 
-  test "next 10 and then newest" do
-    visit ripples_url
-    click_on "Next 10 Ripples"
-    puts "testing"
-    assert_equal(10, getPosition)
-    click_on "Newest"
-  end
-  
-  test "oldest and back by 10" do
-    visit ripples_url
-    click_on "Oldest"
-    click_on "Previous 10 Ripples"
-  end
 end

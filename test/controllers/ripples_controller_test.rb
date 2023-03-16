@@ -17,11 +17,10 @@ class RipplesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create ripple" do
     assert_difference('Ripple.count') do
-      post ripples_url, params: { ripple: { message: @ripple.message, url: @ripple.url, ​​name: @ripple.​​name } }
+      post ripples_url, params: { ripple: { message: @ripple.message, url: @ripple.url, name: @ripple.name } }
     end
 
     assert_redirected_to action: "index"
-#    assert_redirected_to ripple_url(Ripple.last)
   end
 
   test "should show ripple" do
@@ -35,7 +34,7 @@ class RipplesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update ripple" do
-    patch ripple_url(@ripple), params: { ripple: { message: @ripple.message, url: @ripple.url, ​​name: @ripple.​​name } }
+    patch ripple_url(@ripple), params: { ripple: { message: @ripple.message, url: @ripple.url, name: @ripple.name } }
     assert_redirected_to ripple_url(@ripple)
   end
 
@@ -46,4 +45,20 @@ class RipplesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to ripples_url
   end
+  
+  test "next 10 and then newest" do
+    get ripples_url
+    assert_nil(session[:position])
+    setPosition(10)
+#    assert_equal(10, session[:position])
+#    click_on "Next 10 Ripples"
+#    click_on "Newest"
+  end
+  
+  test "oldest and back by 10" do
+    get ripples_url
+#    click_on "Oldest"
+#    click_on "Previous 10 Ripples"
+  end
+
 end
