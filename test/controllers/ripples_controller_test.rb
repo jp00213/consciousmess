@@ -46,19 +46,28 @@ class RipplesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to ripples_url
   end
   
+  # gets index page, position is 0, changes position by 10, 
+  # resets position to 0 for newest items
   test "next 10 and then newest" do
     get ripples_url
-    assert_nil(session[:position])
-    setPosition(10)
-#    assert_equal(10, session[:position])
-#    click_on "Next 10 Ripples"
-#    click_on "Newest"
+    assert_equal(0, session[:position])
+    post '/changePosition', params: { value: 10 }
+    assert_equal(10, session[:position])
+    post '/setPosition', params: { value: 0 }
+    assert_equal(0, session[:position])
   end
   
+  # gets index page, position is 0, selects last page (), 
+  # changes position by -10 for back one page
   test "oldest and back by 10" do
     get ripples_url
-#    click_on "Oldest"
-#    click_on "Previous 10 Ripples"
+    assert_equal(0, session[:position])
+    arraySize = @controller.index.size
+    lastPage = (arraySize / 10) * 10
+    post '/changePosition', params: { value: lastPage }
+    assert_equal(lastPage, session[:position])
+    post '/changePosition', params: { value: -10 }
+    assert_equal(lastPage-10, session[:position])
   end
 
 end

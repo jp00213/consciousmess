@@ -56,6 +56,7 @@ class RipplesController < ApplicationController
     end
   end
 
+  # Sets position to a submitted value
   def setPosition(value = Integer(params[:value]))
     session[:position] = value
     respond_to do |format|
@@ -63,20 +64,20 @@ class RipplesController < ApplicationController
     end
   end
   
+  # Increases/decreases position by submitted value, sets to 0 if not yet initiallized
   def changePosition(value = Integer(params[:value]))
     if session[:position] == nil
       session[:position] = 0
     end
     session[:position] = Integer(session[:position]) + value
+    if session[:position] < 10
+      session[:position] = 0
+    end
     respond_to do |format|
       format.html { redirect_to action: "index" }
     end
   end
-
-  def getPosition
-    session[:position]
-  end
-
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

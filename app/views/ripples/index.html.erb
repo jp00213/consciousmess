@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
+<% if session[:position] == nil%>
+  <% session[:position] = 0 %>
+<% end %>
+<% last = (@ripples.length / 10) * 10 %>
 
 <table>
   <thead>
@@ -11,7 +15,7 @@
   </thead>
 
   <tbody>
-    <% @ripples.limit(10).offset(getPosition).each do |ripple| %>
+    <% @ripples.limit(10).offset(session[:position]).each do |ripple| %>
       <tr>
         <td class="columnName">
           <% if ripple.url == "" %>
@@ -30,13 +34,18 @@
 </table>
 
 <br>
-<% last = (@ripples.length / 10) * 10 %>
 
 <%= link_to 'Newest', setPosition_path(:value => 0), method: :post %> | 
 
 <% if @ripples.length > 10 %>
   <%= link_to 'Previous 10 Ripples', changePosition_path(:value => -10), method: :post %> | 
-  <%= link_to 'Next 10 Ripples', changePosition_path(:value => 10), method: :post %> | 
+
+  <% if (session[:position] + 10) > last %>
+    <%= link_to 'Next 10 Ripples', setPosition_path(:value => last), method: :post %> | 
+  <% else %>
+    <%= link_to 'Next 10 Ripples', changePosition_path(:value => 10), method: :post %> | 
+  <% end %>
+
   <%= link_to 'Oldest', setPosition_path(:value => last), method: :post %> | 
 <% else %>
   Previous 10 Ripples | Next 10 Ripples | Oldest | 
