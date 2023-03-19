@@ -33,28 +33,30 @@ class RipplesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /ripples/1 or /ripples/1.json
-  def update
-    respond_to do |format|
-      if @ripple.update(ripple_params)
-        format.html { redirect_to ripple_url(@ripple), notice: "Ripple was successfully updated." }
-        format.json { render :show, status: :ok, location: @ripple }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @ripple.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /ripples/1 or /ripples/1.json
-  def destroy
-    @ripple.destroy
-
-    respond_to do |format|
-      format.html { redirect_to ripples_url, notice: "Ripple was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
+#  Preserved update and destroy methods instead of removing for future use cases
+#  Ripple model has before_update and before_destroy implemented to block actions
+#  
+#  # PATCH/PUT /ripples/1 or /ripples/1.json
+#  def update
+#    respond_to do |format|
+#      if @ripple.update(ripple_params)
+#        format.html { redirect_to ripple_url(@ripple), notice: "Ripple was successfully updated." }
+#        format.json { render :show, status: :ok, location: @ripple }
+#      else
+#        format.html { render :edit, status: :unprocessable_entity }
+#        format.json { render json: @ripple.errors, status: :unprocessable_entity }
+#      end
+#    end
+#  end
+#
+#  # DELETE /ripples/1 or /ripples/1.json
+#  def destroy
+#    @ripple.destroy
+#    respond_to do |format|
+#      format.html { redirect_to ripples_url, notice: "Ripple was successfully destroyed." }
+#      format.json { head :no_content }
+#    end
+#  end
 
   # Sets position to a submitted value
   def setPosition(value = Integer(params[:value]))
