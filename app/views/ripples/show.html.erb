@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= @ripple.name %> said:
+  <% if @ripple.url == "" %>
+    <%= @ripple.name %> said:
+  <% else %>
+    <a href=<%= @ripple.url %>><%= @ripple.name %></a> said:
+  <% end %>
 </p>
 
 <p class="fancymessage">

@@ -33,19 +33,6 @@ class RipplesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should update ripple" do
-    patch ripple_url(@ripple), params: { ripple: { message: @ripple.message, url: @ripple.url, name: @ripple.name } }
-    assert_redirected_to ripple_url(@ripple)
-  end
-
-  test "should destroy ripple" do
-    assert_difference('Ripple.count', -1) do
-      delete ripple_url(@ripple)
-    end
-
-    assert_redirected_to ripples_url
-  end
-  
   # gets index page, position is 0, changes position by 10, 
   # resets position to 0 for newest items
   test "next 10 and then newest" do

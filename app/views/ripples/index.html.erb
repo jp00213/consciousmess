@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
-<% if session[:position] == nil%>
+<% if session[:position] == nil %>
   <% session[:position] = 0 %>
 <% end %>
+
 <% last = (@ripples.length / 10) * 10 %>
+<% if @ripples.length % 10 == 0 %>
+  <% last = last - 10 %>
+<% end %>
 
 <table>
   <thead>

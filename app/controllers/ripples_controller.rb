@@ -26,6 +26,7 @@ class RipplesController < ApplicationController
     respond_to do |format|
       if @ripple.save
         format.html { redirect_to action: "index" }
+        session[:position] = 0
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @ripple.errors, status: :unprocessable_entity }
