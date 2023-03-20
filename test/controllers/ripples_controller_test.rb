@@ -40,8 +40,10 @@ class RipplesControllerTest < ActionDispatch::IntegrationTest
     assert_equal(0, session[:position])
     post '/changePosition', params: { value: 10 }
     assert_equal(10, session[:position])
+    assert_redirected_to action: "index"
     post '/setPosition', params: { value: 0 }
     assert_equal(0, session[:position])
+    assert_redirected_to action: "index"
   end
   
   # gets index page, position is 0, selects last page (), 
@@ -51,10 +53,15 @@ class RipplesControllerTest < ActionDispatch::IntegrationTest
     assert_equal(0, session[:position])
     arraySize = @controller.index.size
     lastPage = (arraySize / 10) * 10
+    if (arraySize % 10 == 0) 
+      lastPage = lastPage - 10
+    end
     post '/changePosition', params: { value: lastPage }
     assert_equal(lastPage, session[:position])
+    assert_redirected_to action: "index"
     post '/changePosition', params: { value: -10 }
     assert_equal(lastPage-10, session[:position])
+    assert_redirected_to action: "index"
   end
 
 end

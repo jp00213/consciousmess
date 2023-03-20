@@ -25,5 +25,4 @@ class RipplesTest < ApplicationSystemTestCase
     assert_selector "th", text: "Posted"
     assert_selector "td", text: @ripple.name
   end
-
 end
